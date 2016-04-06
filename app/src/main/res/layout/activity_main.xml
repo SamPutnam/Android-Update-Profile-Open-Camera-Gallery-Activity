@@ -52,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:inputType="textAutoComplete"
             android:layout_below="@+id/textView_Name"
             android:hint="@string/name">
             </EditText>
@@ -69,6 +70,7 @@
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:inputType="textEmailAddress"
             android:layout_below="@+id/editText_Name"
             android:hint="@string/email">
             </EditText>
@@ -86,6 +88,7 @@
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:inputType="phone"
             android:layout_below="@+id/editText_Email"
             android:hint="@string/phone">
             </EditText>
@@ -98,22 +101,25 @@
             android:layout_below="@+id/editText_Major">
         </TextView>
         <RadioGroup
-            android:layout_below="@+id/editText_Major"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:id="@+id/radio_Gender"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
-            <RadioButton android:id="@+id/radio_Female"
-                android:text="@string/female"
-                android:onClick="onRadioButtonClicked">
-            </RadioButton>
-            <RadioButton android:id="@+id/radio_Male"
+            android:layout_margin="5dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio_Female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/editText_Major"
-                android:layout_marginLeft="130dip"
-                android:text="@string/male"
-                android:onClick="onRadioButtonClicked">
+                android:layout_weight="1"
+                android:text="@string/female">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/radio_Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/male">
             </RadioButton>
         </RadioGroup>
         <TextView
