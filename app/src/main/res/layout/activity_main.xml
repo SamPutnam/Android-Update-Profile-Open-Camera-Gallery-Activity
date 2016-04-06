@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
+            android:onClick="onChangeClicked"
             android:text="@string/change"
             android:layout_toRightOf="@+id/imageView_ProfilePhoto">
             </Button>
