@@ -9,6 +9,7 @@
     <string name="phone">Phone</string>
     <string name="graduating_class">Class</string>
     <string name="major">Major</string>
+    <string name="gender">Gender</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="save">Save</string>

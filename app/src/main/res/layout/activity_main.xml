@@ -42,41 +42,85 @@
             android:id="@+id/textView_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/name"
             android:layout_below="@+id/imageView_Profile_Photo">
             </TextView>
         <EditText
             android:id="@+id/editText_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_below="@+id/textView_Name"
             android:hint="@string/name">
             </EditText>
         <TextView
-            android:id="@+id/textView_Name"
+            android:id="@+id/textView_Email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/email"
             android:layout_below="@+id/editText_Name">
         </TextView>
         <EditText
             android:id="@+id/editText_Email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_below="@+id/editText_Name"
             android:hint="@string/email">
-            </EditText>
-        <EditText
-            android:id="@+id/editText_Phone"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_below="@+id/editText_Email"
-            android:hint="@string/phone">
             </EditText>
         <TextView
             android:id="@+id/textView_Phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/phone"
+            android:layout_below="@+id/editText_Phone">
+        </TextView>
+        <EditText
+            android:id="@+id/editText_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editText_Email"
+            android:hint="@string/phone">
+            </EditText>
+        <TextView
+            android:id="@+id/textView_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/gender"
+            android:layout_below="@+id/editText_Major">
+        </TextView>
+        <RadioGroup
+            android:layout_below="@+id/editText_Major"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <RadioButton android:id="@+id/radio_Female"
+                android:text="@string/female"
+                android:onClick="onRadioButtonClicked">
+            </RadioButton>
+            <RadioButton android:id="@+id/radio_Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/editText_Major"
+                android:layout_marginLeft="130dip"
+                android:text="@string/male"
+                android:onClick="onRadioButtonClicked">
+            </RadioButton>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/textView_Phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/graduating_class"
             android:layout_below="@+id/editText_Phone">
         </TextView>
         <EditText
@@ -89,10 +133,12 @@
             android:hint="@string/graduating_class">
             </EditText>
         <TextView
-            android:id="@+id/textView_Name"
+            android:id="@+id/textView_Phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText_Graduating_Class">
+            android:layout_margin="5dp"
+            android:text="@string/major"
+            android:layout_below="@+id/editText_Phone">
         </TextView>
         <EditText
             android:id="@+id/editText_Major"
@@ -101,31 +147,8 @@
             android:layout_weight="1"
             android:layout_below="@+id/editText_Graduating_Class"
             android:hint="@string/major">
-            </EditText>
-        <TextView
-            android:id="@+id/textView_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editText_Major">
-        </TextView>
-        <RadioGroup
-            android:layout_below="@+id/editText_Major"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RadioButton android:id="@+id/radio_Female"
-                android:text="@string/female"
-                android:onClick="onRadioButtonClicked">
-                </RadioButton>
-            <RadioButton android:id="@+id/radio_Male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/editText_Major"
-                android:layout_marginLeft="130dip"
-                android:text="@string/male"
-                android:onClick="onRadioButtonClicked">
-                </RadioButton>
-        </RadioGroup>
+        </EditText>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
