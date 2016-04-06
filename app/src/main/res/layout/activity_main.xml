@@ -1,16 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.samuelputnam.one.MainActivity">
-
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
+        android:id="@+id/textView_Profile_Photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:text="@string/profile"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+    <ImageView
+        android:id="@+id/imageView_Profile_Photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_Profile_Photo"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView_Profile_Photo"
+            android:text="@string/change" />
+        <TextView
+            android:id="@+id/textView_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView_Profile_Photo"/>
+
+        <EditText
+            android:id="@+id/editText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_Name"
+            android:hint="@string/name"/>
+        <EditText
+            android:id="@+id/editText_Email"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editText_Name"
+            android:hint="@string/email" />
+        <EditText
+            android:id="@+id/editText_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editText_Email"
+            android:hint="@string/phone" />
+        <EditText
+            android:id="@+id/editText_Graduating_Class"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editText_Phone"
+            android:gravity="top"
+            android:hint="@string/graduating_class" />
+        <EditText
+            android:id="@+id/editText_Major"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editText_Graduating_Class"
+            android:hint="@string/major" />
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_Major"
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/radio_Female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton android:id="@+id/radio_Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+        <Button
+            android:id="@+id/button_Save"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/save" />
+        <Button
+            android:id="@+id/button_Cancel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,4 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">one</string>
     <string name="settings">Settings</string>
+    <string name="profile">Profile Photo</string>
+    <string name="name">Name</string>
+    <string name="change">Change</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="graduating_class">Class</string>
+    <string name="major">Major</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
