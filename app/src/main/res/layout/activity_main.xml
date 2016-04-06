@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/textView_Profile_Photo"
         android:layout_width="wrap_content"
@@ -14,43 +14,49 @@
         android:text="@string/profile"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true">
+        </TextView>
     <ImageView
         android:id="@+id/imageView_Profile_Photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_Profile_Photo"/>
+        android:layout_below="@+id/textView_Profile_Photo">
+        </ImageView>
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView_Profile_Photo"
-            android:text="@string/change" />
+            android:text="@string/change">
+            </Button>
         <TextView
             android:id="@+id/textView_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView_Profile_Photo"/>
-
+            android:layout_below="@+id/imageView_Profile_Photo">
+            </TextView>
         <EditText
             android:id="@+id/editText_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView_Name"
-            android:hint="@string/name"/>
+            android:hint="@string/name">
+            </EditText>
         <EditText
             android:id="@+id/editText_Email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_below="@+id/editText_Name"
-            android:hint="@string/email" />
+            android:hint="@string/email">
+            </EditText>
         <EditText
             android:id="@+id/editText_Phone"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_below="@+id/editText_Email"
-            android:hint="@string/phone" />
+            android:hint="@string/phone">
+            </EditText>
         <EditText
             android:id="@+id/editText_Graduating_Class"
             android:layout_width="match_parent"
@@ -58,14 +64,16 @@
             android:layout_weight="1"
             android:layout_below="@+id/editText_Phone"
             android:gravity="top"
-            android:hint="@string/graduating_class" />
+            android:hint="@string/graduating_class">
+            </EditText>
         <EditText
             android:id="@+id/editText_Major"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_below="@+id/editText_Graduating_Class"
-            android:hint="@string/major" />
+            android:hint="@string/major">
+            </EditText>
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -75,25 +83,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                android:onClick="onRadioButtonClicked"/>
+                android:onClick="onRadioButtonClicked">
+                </RadioButton>
             <RadioButton android:id="@+id/radio_Male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                android:onClick="onRadioButtonClicked"/>
+                android:onClick="onRadioButtonClicked">
+                </RadioButton>
         </RadioGroup>
         <Button
             android:id="@+id/button_Save"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="@string/save" />
+            android:text="@string/save">
+            </Button>
         <Button
             android:id="@+id/button_Cancel"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/cancel" />
-
+            android:text="@string/cancel">
+            </Button>
     </LinearLayout>
 </ScrollView>
