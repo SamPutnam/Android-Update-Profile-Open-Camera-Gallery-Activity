@@ -73,7 +73,7 @@
             android:hint="@string/phone">
             </EditText>
         <TextView
-            android:id="@+id/textView_Name"
+            android:id="@+id/textView_Phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_Phone">
