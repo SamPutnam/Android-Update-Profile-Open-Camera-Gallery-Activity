@@ -136,6 +136,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_below="@+id/editText_Phone"
+            android:inputType="number"
             android:gravity="top"
             android:hint="@string/graduating_class">
             </EditText>
@@ -152,6 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:inputType="textAutoComplete"
             android:layout_below="@+id/editText_Graduating_Class"
             android:hint="@string/major">
         </EditText>
