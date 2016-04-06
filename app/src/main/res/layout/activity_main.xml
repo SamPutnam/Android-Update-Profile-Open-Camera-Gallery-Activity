@@ -21,13 +21,13 @@
         android:baselineAligned="false">
     <ImageView
         android:id="@+id/imageView_Profile_Photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_weight="1"
         android:layout_margin="5dp"
         android:layout_below="@+id/textView_Profile_Photo"
-        android:layout_toLeftOf="@+id/button_Change">
-        </ImageView>
+        android:layout_toLeftOf="@+id/button_Change"
+        android:src="@drawable/dartmouth"/>
         <Button
             android:id="@+id/button_Change"
             android:layout_width="wrap_content"
