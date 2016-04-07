@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             /*    alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // here you can add functions
+                        // a comment
                     }
                 });*/
                 alertDialog.show();
