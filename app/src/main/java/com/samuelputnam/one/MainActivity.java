@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.widget.Button;
 import android.content.DialogInterface;
 import android.app.Dialog;
+import android.support.v4.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,42 +20,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button button = (Button) findViewById(R.id.button_Change);
+        assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle(R.string.pick_profile_picture);
-                alertDialog.setItems(R.array.change_button_items);
-
-                //bottom-right button in dialog
-            /*    alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // here you can add functions
-                        // a comment
+                alertDialog.setItems(R.array.change_button_items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int item) {
+                        // open the camera or the gallery
                     }
-                });*/
-                AlertDialog dialog = builder.create();
-
+                });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
             }
         });
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.overflow, menu);
-        return true;
-    }
-/*
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.pick_profile_picture)
-                .setItems(R.array.change_button_items, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                    }
-                });
-        return builder.create();
-    }*/
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            getMenuInflater().inflate(R.menu.overflow, menu);
+            return true;
+        }
 }
-
