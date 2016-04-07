@@ -14,4 +14,5 @@
     <string name="male">Male</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="pick_profile_picture">Pick Profile Picture</string>
 </resources>
