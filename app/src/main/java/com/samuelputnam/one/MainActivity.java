@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setTitle("Pick Profile Picture");
                 alertDialog.setMessage("this is my app");
 
-                alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
+                        //bottom-right button in dialog
+            /*    alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // here you can add functions
                     }
-                });
+                });*/
                 alertDialog.show();
             }
     });
