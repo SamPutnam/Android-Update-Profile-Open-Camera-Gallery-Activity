@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.samuelputnam.one">
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+    <uses-feature android:name="android.hardware.camera" android:required="true"  />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <application
         android:allowBackup="true"
