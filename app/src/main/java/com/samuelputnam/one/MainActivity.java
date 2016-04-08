@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 alertDialog.setItems(R.array.change_button_items, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int which) {
-                        // open the camera or the gallery
+                        // open the camera or open the gallery
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         startActivity(intent);
                         Uri fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
