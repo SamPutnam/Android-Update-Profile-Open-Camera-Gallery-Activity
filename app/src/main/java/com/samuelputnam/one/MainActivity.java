@@ -1,6 +1,8 @@
 package com.samuelputnam.one;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,7 @@ import java.net.URI;
 import android.net.Uri;
 import java.io.File;
 import android.os.Environment;
+import android.widget.ImageView;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -26,14 +29,21 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int REQUEST_TAKE_PHOTO = 1;
+    private ImageView mImageView;
+    private Bitmap mImageBitmap;
+    private static final String BITMAP_STORAGE_KEY = "viewbitmap";
+    private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mImageView = (ImageView) findViewById(R.id.imageView_Profile_Photo);
+        mImageBitmap = null;
+
+
         final Button button = (Button) findViewById(R.id.button_Change);
-        assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -107,6 +117,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void setPic() {
+
+		/* There isn't enough memory to open up more than a couple camera photos */
+		/* So pre-scale the target bitmap into which the file is decoded */
+
+		/* Get the size of the ImageView */
+        int targetW = mImageView.getWidth();
+        int targetH = mImageView.getHeight();
+
+		/* Get the size of the image */
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+		/* Figure out which way needs to be reduced less */
+        int scaleFactor = 1;
+        if ((targetW > 0) || (targetH > 0)) {
+            scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+        }
+
+		/* Set bitmap options to scale the image decode target */
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inPurgeable = true;
+
+		/* Decode the JPEG file into a Bitmap */
+        Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+
+		/* Associate the Bitmap to the ImageView */
+        mImageView.setImageBitmap(bitmap);
+        mImageView.setVisibility(View.VISIBLE);
+    }
     /**
      * Invoke the system's media scanner to add your photo to the Media Provider's database,
      * making it available in the Android Gallery application and to other apps.
@@ -117,5 +161,23 @@ public class MainActivity extends AppCompatActivity {
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+    }
+    // Some lifecycle callbacks so that the image can survive orientation change
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(BITMAP_STORAGE_KEY, mImageBitmap);
+        outState.putBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY, (mImageBitmap != null) );
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mImageBitmap = savedInstanceState.getParcelable(BITMAP_STORAGE_KEY);
+        mImageView.setImageBitmap(mImageBitmap);
+        mImageView.setVisibility(
+                savedInstanceState.getBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY) ?
+                        ImageView.VISIBLE : ImageView.INVISIBLE
+        );
     }
 }
