@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             // Specify the uri of the image
                             intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mCurrentPhotoPath);
-                            startActivityForResult(intent, PICK_FROM_CAMERA);
+                            //startActivityForResult(intent, PICK_FROM_CAMERA);
                         }
                         if (which == 1){
                             //Select from Gallery
@@ -83,18 +83,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) return;
-        switch (requestCode) {
-            case PICK_FROM_CAMERA:
-                //doCrop();
-                break;
-            case PICK_FROM_FILE:
-                //doCrop();
-                break;
-        }
-    }
+       if (resultCode == RESULT_OK) {
+           if (requestCode == PICK_FROM_CAMERA) {
+               //doCrop();
+           }
+           if (requestCode == PICK_FROM_FILE) {
+               //doCrop();
+           }
+       }
+   }
+
 
 
     // A method that returns a unique file name for a new photo using a date-time stamp:
