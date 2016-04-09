@@ -20,21 +20,24 @@ import java.io.File;
 import android.os.Environment;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.IOException;
 
+
+
 /** help from android: http://developer.android.com/training/camera/photobasics.html */
 
 public class MainActivity extends AppCompatActivity {
-    public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int REQUEST_TAKE_PHOTO = 1;
     private ImageView mImageView;
     private Bitmap mImageBitmap;
     private static final String BITMAP_STORAGE_KEY = "viewbitmap";
     private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
-    private static final int PICK_FROM_FILE = 3;
+    private static final int PICK_FROM_CAMERA = 1;
+    private static final int PICK_FROM_FILE = 2;
+    private String mCurrentPhotoPath;
+
 
     /** Called when the activity is first created. */
     @Override
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             // Specify the uri of the image
                             intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mCurrentPhotoPath);
+                            startActivityForResult(intent, PICK_FROM_CAMERA);
                         }
                         if (which == 1){
                             //Select from Gallery
@@ -79,7 +83,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    String mCurrentPhotoPath;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) return;
+        switch (requestCode) {
+            case PICK_FROM_CAMERA:
+                //doCrop();
+                break;
+            case PICK_FROM_FILE:
+                //doCrop();
+                break;
+        }
+    }
+
 
     // A method that returns a unique file name for a new photo using a date-time stamp:
     private File createImageFile() throws IOException {
