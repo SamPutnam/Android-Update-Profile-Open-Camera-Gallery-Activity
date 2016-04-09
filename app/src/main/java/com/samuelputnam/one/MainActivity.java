@@ -19,6 +19,7 @@ import android.net.Uri;
 import java.io.File;
 import android.os.Environment;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -33,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap mImageBitmap;
     private static final String BITMAP_STORAGE_KEY = "viewbitmap";
     private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
+    private static final int PICK_FROM_FILE = 3;
 
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +56,20 @@ public class MainActivity extends AppCompatActivity {
 
                 alertDialog.setItems(R.array.change_button_items, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int which) {
-                        // open the camera or open the gallery
-                        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                        startActivity(intent);
+                        if (which == 0) {
+                            // Open Camera
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            startActivity(intent);
+                            // Specify the uri of the image
+                            intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mCurrentPhotoPath);
+                        }
+                        if (which == 1){
+                            //Select from Gallery
+                            Intent intent2 = new Intent();
+                            intent2.setType("image/*");
+                            intent2.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent2, "Complete action using"), PICK_FROM_FILE);
+                        }
 
                     }
                 });
@@ -63,15 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-    }
-
-    /**
-     * Settings overflow menu option
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.overflow, menu);
-        return true;
     }
 
     String mCurrentPhotoPath;
@@ -162,11 +167,11 @@ public class MainActivity extends AppCompatActivity {
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
     }
-    // Some lifecycle callbacks so that the image can survive orientation change
+    /**Some lifecycle callbacks so that the image can survive orientation change*/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(BITMAP_STORAGE_KEY, mImageBitmap);
-        outState.putBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY, (mImageBitmap != null) );
+        outState.putBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY, (mImageBitmap != null));
         super.onSaveInstanceState(outState);
     }
 
@@ -180,4 +185,12 @@ public class MainActivity extends AppCompatActivity {
                         ImageView.VISIBLE : ImageView.INVISIBLE
         );
     }
+    /** Settings overflow menu option */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
+    }
+
 }
+
