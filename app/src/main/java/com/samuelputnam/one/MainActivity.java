@@ -55,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
             mImageCaptureUri = savedInstanceState
                     .getParcelable(URI_INSTANCE_STATE_KEY);
         }
-        createImageFile();
+        try {
+            createImageFile();
+        } catch (IOException e) {
+            mImageView.setImageResource(R.drawable.dartmouth);
+        }
+        photoDirectory();
         loadSnap();
 
 
@@ -121,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadSnap() {
         // Load profile photo from internal storage
         try {
-            FileInputStream fis = openFileInput(mCurrentPhotoPath);
+            FileInputStream fis = openFileInput(getString(R.string.profile_photo_file_name));
                 Bitmap bmap = BitmapFactory.decodeStream(fis);
                 mImageView.setImageBitmap(bmap);
                 fis.close();
@@ -151,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     // A method that returns a unique file name for a new photo using a date-time stamp:
-    private File createImageFile() {
-        try {
+    private File createImageFile() throws IOException {
             // Create an image file name
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String imageFileName = "JPEG_" + timeStamp + "_";
@@ -166,17 +170,16 @@ public class MainActivity extends AppCompatActivity {
             );
             // Save a file: path for use with ACTION_VIEW intents
             mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-        } catch (IOException e) {
-            mImageView.setImageResource(R.drawable.dartmouth);
-            e.printStackTrace();
-        }
-        return image;
+            return image;
+    }
+    private String photoDirectory(){
+                return mCurrentPhotoPath;
     }
 
     //With the createImageFile() method available to create a file for the photo,
     // you can now create and invoke the Intent like this:
 
-    private void dispatchTakePictureIntent() {
+    private void dispatchTakePictureIntent() throws IOException {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
