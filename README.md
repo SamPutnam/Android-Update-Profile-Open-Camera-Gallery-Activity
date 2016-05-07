@@ -4,3 +4,7 @@ This is one Android app. It has an overflow menu, identifying information input 
 
 ![Dartmouth](http://i.imgur.com/7agEhPl.png?1)
 
+<img src="http://i.imgur.com/bBOPdbp.jpg" width="100">
+
+<img src="http://i.imgur.com/ZAdKvZa.gif" width="300">
+
