@@ -6,5 +6,5 @@ This is one Android app. It has an overflow menu, identifying information input 
 
 <img src="http://i.imgur.com/bBOPdbp.jpg" width="100">
 
-<img src="http://i.imgur.com/ZAdKvZa.gif" width="300">
+<img src="http://i.imgur.com/MrSoHQK.png" width="300">
 
